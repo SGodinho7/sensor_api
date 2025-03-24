@@ -1,4 +1,4 @@
-from profileapp.app import db
+from app.app import db
 
 
 class Other(db.Model):

@@ -13,10 +13,10 @@ def create_app():
 
     # import blueprints here
     from app.blueprints.core.routes import core
-    from app.blueprints.profiles.routes import profiles
+    from app.blueprints.sensor_api.routes import sensors
 
     app.register_blueprint(core, url_prefix='/')
-    app.register_blueprint(other, url_prefix='/other')
+    app.register_blueprint(sensors, url_prefix='/sensors')
 
     migrate = Migrate(app, db)
 
