@@ -5,5 +5,9 @@
 {% block content %}
 <div style="margin: 25px">
 	<h1>Sensors Page</h1>
+	<br>
+	<a href="{{ url_for('sensors.register') }}">
+		<button class="btn btn-primary">Register</button>
+	</a>
 </div>
 {% endblock %}

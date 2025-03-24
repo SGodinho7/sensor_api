@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Register Sensor{% endblock %}
+
+{% block content %}
+<div style="margin: 25px">
+	<h1>Register Sensor</h1>
+	<br>
+	<form method="post" id="sensor-form" style="width: 250px;">
+		<label for="name" class="form-label">Name</label>
+		<input type="text" id="name" name="name" class="form-control" required>
+		<br>
+		<label for="desc" class="form-label">Description</label>
+		<textarea form="sensor-form" id="desc" name="desc" rows="4" cols="50" maxlength="180"
+			style="resize: none;"></textarea>
+		<br><br>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/sensors/static/js/post_sensor.js"></script>
+{% endblock %}
