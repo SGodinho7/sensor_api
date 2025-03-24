@@ -9,5 +9,18 @@
 	<a href="{{ url_for('sensors.register') }}">
 		<button class="btn btn-primary">Register</button>
 	</a>
+	<br><br>
+	{% for sensor in sensors %}
+	<div class="card" style="width: 25rem;">
+		<div class="card-body">
+			<h5 class="card-title">{{ sensor.name }}</h5>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Description:<br><br>{{ sensor.desc }}</li>
+				<li class="list-group-item">State: {{ sensor.state }}</li>
+			</ul>
+		</div>
+	</div>
+	<br>
+	{% endfor %}
 </div>
 {% endblock %}

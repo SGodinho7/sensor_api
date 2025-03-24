@@ -12,6 +12,8 @@ async function postSensor() {
 	} catch (e) {
 		console.error(e);
 	}
+
+	window.location.replace('/sensors');
 }
 
 form.addEventListener('submit', (event) => {
