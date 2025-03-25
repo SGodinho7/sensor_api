@@ -19,6 +19,16 @@ def register():
     return render_template('sensor_api/register.html')
 
 
+@sensors.route('/get_sensor/<int:pid>', methods=['GET'])
+def get_sensor(pid):
+    sensor = db.session.get(Sensor, pid)
+
+    if sensor is None:
+        return render_template('404.html'), 404
+
+    return jsonify(sensor.serialize)
+
+
 @sensors.route('/post_sensor', methods=['POST'])
 def post_sensor():
     data = request.form

@@ -11,3 +11,12 @@ class Sensor(db.Model):
 
     def __repr__(self):
         return f'{self.sid}, {self.name}, {self.desc}, {self.state};'
+
+    @property
+    def serialize(self):
+        return {
+            'sid': self.sid,
+            'name': self.name,
+            'desc': self.desc,
+            'state': self.state,
+        }
