@@ -2,11 +2,15 @@ const form = document.querySelector('#sensor-form');
 
 async function postSensor() {
 	form_data = new FormData(form);
+	data = Object.fromEntries(form_data);
 
 	try {
 		const response = await fetch('/sensors/post_sensor', {
 			method: 'POST',
-			body: form_data,
+			headers: {
+				"Content-Type": "application/json; charset=utf-8"
+		},
+			body: JSON.stringify(data),
 		});
 		console.log(await response.json());
 	} catch (e) {

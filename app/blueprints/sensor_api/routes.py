@@ -31,7 +31,7 @@ def get_sensor(pid):
 
 @sensors.route('/post_sensor', methods=['POST'])
 def post_sensor():
-    data = request.form
+    data = request.get_json()
     sensor = Sensor(name=data['name'], desc=data['desc'], state=0)
 
     db.session.add(sensor)
