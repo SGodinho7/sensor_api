@@ -5,7 +5,7 @@ async function postSensor() {
 	data = Object.fromEntries(form_data);
 
 	try {
-		const response = await fetch('/sensors/post_sensor', {
+		const response = await fetch('/sensors/post-sensor', {
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json; charset=utf-8"

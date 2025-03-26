@@ -19,7 +19,18 @@ def register():
     return render_template('sensor_api/register.html')
 
 
-@sensors.route('/get_sensor/<int:pid>', methods=['GET'])
+@sensors.route('/get-all', methods=['GET'])
+def get_all_sensors():
+    sensors = Sensor.query.all()
+    sensors_dict = []
+
+    for s in sensors:
+        sensors_dict.append(s.serialize)
+
+    return jsonify(sensors_dict)
+
+
+@sensors.route('/get-sensor/<int:pid>', methods=['GET'])
 def get_sensor(pid):
     sensor = db.session.get(Sensor, pid)
 
@@ -29,7 +40,7 @@ def get_sensor(pid):
     return jsonify(sensor.serialize)
 
 
-@sensors.route('/post_sensor', methods=['POST'])
+@sensors.route('/post-sensor', methods=['POST'])
 def post_sensor():
     data = request.get_json()
     sensor = Sensor(name=data['name'], desc=data['desc'], state=0)
@@ -40,7 +51,7 @@ def post_sensor():
     return jsonify('{"message": "Success"}')
 
 
-@sensors.route('/update_state/<int:sid>/<int:state>', methods=['PUT'])
+@sensors.route('/update-state/<int:sid>/<int:state>', methods=['PUT'])
 def update_state(sid, state):
     sensor = db.get_or_404(Sensor, sid)
     if state == 1 or state == 0:
