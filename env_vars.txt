@@ -1,3 +1,4 @@
+WEB_WORKERS=2
 WEB_DB=postgresql
 PG_USER=flask
 PG_PASSWORD=Pythonpass2004$
