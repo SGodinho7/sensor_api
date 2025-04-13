@@ -62,3 +62,13 @@ def update_state(sid, state):
     db.session.commit()
 
     return jsonify({"message": "Success"})
+
+
+@sensors.route('/delete-sensor/<sid>', methods=['DELETE'])
+def delete_sensor(sid):
+    sensor = db.session.get(Sensor, sid)
+
+    db.session.delete(sensor)
+    db.session.commit()
+
+    return jsonify({"message": "Success"})

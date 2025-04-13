@@ -18,10 +18,15 @@
 				<li class="list-group-item">Id: {{ sensor.sid }}</li>
 				<li class="list-group-item">Description:<br><br>{{ sensor.desc }}</li>
 				<li class="list-group-item">State: {{ sensor.state }}</li>
+				<li class="list-group-item"><button class="btn btn-danger" onclick="deleteSensor('{{ url_for('sensors.delete_sensor', sid=sensor.sid) }}')">Delete</button></li>
 			</ul>
 		</div>
 	</div>
 	<br>
 	{% endfor %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/sensors/static/js/delete_sensor.js"></script>
 {% endblock %}
