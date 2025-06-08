@@ -11,7 +11,7 @@ if db_type == 'postgresql':
     ip = os.getenv('PG_IP')
     port = os.getenv('PG_PORT', '5432')
     database_name = os.getenv('PG_DATABASE')
-    schema = os.getenv('PG_SCHEMA')
+    schema = os.getenv('PG_SCHEMA', 'public')
 
 db = SQLAlchemy()
 
