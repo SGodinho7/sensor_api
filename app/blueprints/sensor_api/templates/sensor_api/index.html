@@ -18,7 +18,7 @@
 				<li class="list-group-item">Id: {{ sensor.sid }}</li>
 				<li class="list-group-item">Description:<br><br>{{ sensor.desc }}</li>
 				<li class="list-group-item">State: {{ sensor.state }}</li>
-				<li class="list-group-item"><button class="btn btn-danger" onclick="deleteSensor('{{ url_for('sensors.delete_sensor', sid=sensor.sid) }}')">Delete</button></li>
+				<li class="list-group-item"><button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('sensors.update', sid=sensor.sid) }}'">Update</button> <button type="button" class="btn btn-danger" onclick="deleteSensor('{{ url_for('sensors.delete_sensor', sid=sensor.sid) }}')">Delete</button></li>
 			</ul>
 		</div>
 	</div>

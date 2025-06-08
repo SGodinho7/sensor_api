@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Sensor{% endblock %}
+
+{% block content %}
+<div style="margin: 25px">
+	<h1>Register Sensor</h1>
+	<br>
+	<form method="post" id="sensor-form" style="width: 250px;">
+		<label for="Id" class="form-label">Id</label>
+		<input type="number" id="id" name="id" class="form-control" value="{{ sensor.sid }}" required>
+		<label for="name" class="form-label">Name</label>
+		<input type="text" id="name" name="name" class="form-control" value="{{ sensor.name }}" required>
+		<br>
+		<label for="desc" class="form-label">Description</label>
+		<textarea form="sensor-form" id="desc" name="desc" rows="4" cols="50" maxlength="180"
+			style="resize: none;">{{ sensor.desc }}</textarea>
+		<br><br>
+		<button type="submit" class="btn btn-primary">Update</button>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/sensors/static/js/update_sensor.js"></script>
+{% endblock %}

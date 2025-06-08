@@ -19,6 +19,13 @@ def register():
     return render_template('sensor_api/register.html')
 
 
+@sensors.route('/update/<int:sid>', methods=['GET'])
+def update(sid):
+    sensor = Sensor.query.filter(Sensor.sid == sid).first()
+
+    return render_template('sensor_api/update.html', sensor=sensor)
+
+
 @sensors.route('/get-all', methods=['GET'])
 def get_all_sensors():
     sensors = Sensor.query.all()
@@ -51,10 +58,10 @@ def post_sensor():
     return jsonify('{"message": "Success"}')
 
 
-@sensors.route('/update-sensor/<int:sid>', methods=['PUT'])
-def update_sensor(sid):
+@sensors.route('/update-sensor', methods=['PUT'])
+def update_sensor():
     data = request.get_json()
-    sensor = Sensor.query.filter(Sensor.sid == sid).first()
+    sensor = Sensor.query.filter(Sensor.sid == data['id']).first()
 
     sensor.update_info(data)
     db.session.commit()
