@@ -51,6 +51,17 @@ def post_sensor():
     return jsonify('{"message": "Success"}')
 
 
+@sensors.route('/update-sensor/<int:sid>', methods=['PUT'])
+def update_sensor(sid):
+    data = request.get_json()
+    sensor = Sensor.query.filter(Sensor.sid == sid).first()
+
+    sensor.update_info(data)
+    db.session.commit()
+
+    return jsonify('{"message": "Success"}')
+
+
 @sensors.route('/update-state/<int:sid>/<int:state>', methods=['PUT', 'GET'])
 def update_state(sid, state):
     sensor = db.get_or_404(Sensor, sid)

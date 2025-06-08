@@ -9,6 +9,10 @@ class Sensor(db.Model):
     desc = db.Column(db.String(200))
     state = db.Column(db.Integer, nullable=False)
 
+    def update_info(self, data):
+        self.name = data['name']
+        self.desc = data['desc']
+
     def __repr__(self):
         return f'{self.sid}, {self.name}, {self.desc}, {self.state};'
 
